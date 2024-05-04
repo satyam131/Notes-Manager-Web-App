@@ -1,0 +1,15 @@
+<app-navbar></app-navbar>
+<div *ngIf="notes && notes.length > 0" class="notes-container" style="margin: 50px;">
+  <h2 style="color: white;">Recent Notes</h2>
+  <ul class="notes-list" style="padding-left: 20px; padding-right: 40px; ">
+    <li *ngFor="let note of notes">
+      <div class="note-card" style="background-color: rgb(213, 193, 248); box-shadow: 0 4px 8px rgb(238, 204, 245); margin-bottom: 20px;">
+        <div class="note-content" >
+          <strong >{{ note.timestamp | date:'yyyy-MM-dd HH:mm:ss' }}</strong>
+          <p>{{ note.content }}</p>
+        </div>
+        <button class="btn btn-danger" (click)="deleteNote(note.id)" style="padding: 8px;">Delete</button>
+      </div>
+    </li>
+  </ul>
+</div>

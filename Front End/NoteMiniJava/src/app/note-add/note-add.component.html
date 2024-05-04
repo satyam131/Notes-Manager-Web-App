@@ -1,0 +1,20 @@
+<div class="navbar" style="height: 50px;">
+    <button routerLink="/home" class="login-button">Back to Home</button>
+</div>
+<div class="add-note-container" style="width: 50%; background-color: rgb(222, 197, 254);">
+    <h2>Add Note</h2>
+    <form (submit)="onSubmit()">
+        <div class="form-group">
+
+            <label for="content">Add maximum 500 characters</label>
+
+            <textarea id="content" name="content" [(ngModel)]="newNoteContent" class="form-control" required
+                (input)="validateTextarea($event)" [ngClass]="{'invalid-textarea': !isTextareaValid}"
+                maxlength="500" style="width: 95%;"></textarea>
+
+        </div>
+        <div class="text-danger" *ngIf="validationError" style="color: tomato; margin-bottom: 10px;">{{ validationError
+            }}</div>
+        <button type="submit" class="btn btn-primary">Add Note</button>
+    </form>
+</div>
